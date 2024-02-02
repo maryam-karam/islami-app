@@ -22,15 +22,15 @@ class ApplicationThemeManager {
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: primaryColor,
       type: BottomNavigationBarType.fixed,
-      selectedItemColor: Color(0xFF242424),
+      selectedItemColor: Color(0xFF000000),
       selectedLabelStyle: TextStyle(
         fontFamily: "El Messiri",
         fontSize: 16,
         fontWeight: FontWeight.normal,
-        color: Color(0xFF242424),
+        color: Color(0xFF000000),
       ),
       selectedIconTheme: IconThemeData(
-        color: Color(0xFF242424),
+        color: Color(0xFF000000),
       ),
       unselectedItemColor: Colors.white,
       unselectedLabelStyle: TextStyle(
