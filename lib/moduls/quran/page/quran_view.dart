@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/moduls/quran/page/quran_detail.dart';
 
 import '../widget/sura_tittle_widget.dart';
 
@@ -125,9 +126,7 @@ class QuranView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    var mediaQuery = MediaQuery
-        .of(context)
-        .size;
+    var mediaQuery = MediaQuery.of(context).size;
     return Column(
       children: [
         Image.asset(
@@ -170,15 +169,31 @@ class QuranView extends StatelessWidget {
         ),
         Expanded(
           child: ListView.builder(
-            itemBuilder: (context, index) =>
-                SuraTittleWidget(
-                  suraName: suraNames[index],
-                  suraNumber: (index + 1).toString(),
-                ),
+            itemBuilder: (context, index) => GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  QuranDetailsView.routName,
+                  arguments:
+                      SuraDetail(suraNames[index], (index + 1).toString()),
+                );
+              },
+              child: SuraTittleWidget(
+                suraName: suraNames[index],
+                suraNumber: (index + 1).toString(),
+              ),
+            ),
             itemCount: suraNames.length,
           ),
         ),
       ],
     );
   }
+}
+
+class SuraDetail {
+  final String suraName;
+  final String suraNumber;
+
+  SuraDetail(this.suraName, this.suraNumber);
 }
