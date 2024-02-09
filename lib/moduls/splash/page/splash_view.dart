@@ -28,8 +28,7 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    Size mediaQuery = MediaQuery
-        .of(context)
+    var mediaQuery = MediaQuery.of(context)
         .size;
     return Scaffold(
       body: Image.asset(
