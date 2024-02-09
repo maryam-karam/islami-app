@@ -3,6 +3,7 @@ import 'package:islami_app/config/application_theme_manager.dart';
 import 'package:islami_app/moduls/quran/page/quran_detail.dart';
 
 import 'layout/layout_view.dart';
+import 'moduls/hadeth/page/hadeth_details.dart';
 import 'moduls/splash/page/splash_view.dart';
 
 void main() {
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         SplashView.routeName: (context) => SplashView(),
         LayoutView.routName: (context) => LayoutView(),
         QuranDetailsView.routName: (context) => QuranDetailsView(),
+        HadethDetails.routeName: (context) => HadethDetails(),
       },
     );
   }

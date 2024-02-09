@@ -15,9 +15,10 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)!.settings.arguments as SuraDetail;
-    var mediaQuery = MediaQuery.of(context).size;
 
+    var mediaQuery = MediaQuery.of(context).size;
     var theme = Theme.of(context);
+
     loadData(args.suraNumber);
 
     return Container(
@@ -59,16 +60,16 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
                 children: [
                   Text(
                     " سوره ${args.suraName}",
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 25,
                       fontFamily: "El Messiri",
                       fontWeight: FontWeight.normal,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
-                  Icon(
+                  const Icon(
                     Icons.play_circle_filled_rounded,
                     size: 28,
                   ),
@@ -81,7 +82,7 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
                 child: ListView.builder(
                   itemBuilder: (context, index) => Text(
                     versesList[index],
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.normal,
                     ),
@@ -103,5 +104,6 @@ List<String> versesList = [];
 Future loadData(String suraNumber) async {
   String suraContent =
       await rootBundle.loadString("assets/files/$suraNumber.txt");
+
   versesList = suraContent.split("\n");
 }
