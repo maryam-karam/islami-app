@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami_app/config/settings_provider.dart';
 import 'package:islami_app/moduls/quran/page/quran_view.dart';
+import 'package:provider/provider.dart';
 
 class QuranDetailsView extends StatefulWidget {
   const QuranDetailsView({super.key});
@@ -18,14 +20,15 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
 
     var mediaQuery = MediaQuery.of(context).size;
     var theme = Theme.of(context);
+    var vm = Provider.of<SettingsProvider>(context);
 
     loadData(args.suraNumber);
 
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
-            "assets/images/main_background.png",
+            vm.getBackGround(),
           ),
           fit: BoxFit.cover,
         ),
@@ -50,7 +53,9 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
             bottom: 15,
           ),
           decoration: BoxDecoration(
-            color: Color(0xFFF8F8F8).withOpacity(0.8),
+            color: vm.isDark()
+                ? Color(0XFF141A2E).withOpacity(0.8)
+                : Color(0xFFF8F8F8).withOpacity(0.8),
             borderRadius: BorderRadius.circular(25),
           ),
           child: Column(
@@ -60,10 +65,8 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
                 children: [
                   Text(
                     " سوره ${args.suraName}",
-                    style: const TextStyle(
-                      fontSize: 25,
-                      fontFamily: "El Messiri",
-                      fontWeight: FontWeight.normal,
+                    style: theme.textTheme.bodyMedium!.copyWith(
+                      color: vm.isDark() ? Color(0XFFFACC1D) : Colors.black,
                     ),
                   ),
                   const SizedBox(
@@ -75,16 +78,13 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
                   ),
                 ],
               ),
-              Divider(
-                color: theme.primaryColor,
-              ),
+              Divider(),
               Expanded(
                 child: ListView.builder(
                   itemBuilder: (context, index) => Text(
                     versesList[index],
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.normal,
+                    style: theme.textTheme.bodySmall!.copyWith(
+                      color: vm.isDark() ? Color(0XFFFACC1D) : Colors.black,
                     ),
                     textAlign: TextAlign.center,
                   ),

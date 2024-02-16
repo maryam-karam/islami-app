@@ -26,7 +26,7 @@ class SuraTittleWidget extends StatelessWidget {
         Container(
           height: 38,
           width: 1,
-          color: theme.primaryColor,
+          child: VerticalDivider(),
         ),
         Expanded(
           child: Text(

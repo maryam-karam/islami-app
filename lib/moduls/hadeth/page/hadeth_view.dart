@@ -26,7 +26,6 @@ class _HadethViewState extends State<HadethView> {
           height: mediaQuery.height * 0.2,
         ),
         Divider(
-          color: theme.primaryColor,
         ),
         const Text(
           "الأحاديث",
@@ -37,7 +36,6 @@ class _HadethViewState extends State<HadethView> {
           ),
         ),
         Divider(
-          color: theme.primaryColor,
         ),
         Expanded(
           child: ListView.builder(
